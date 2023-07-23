@@ -13,14 +13,9 @@ class ConvertBox extends Component {
   handleChange = (e) => {
     let TempF, TempC
 
-    let value = parseFloat(e.target.value)
-    console.log('==>: ConvertBox -> handleChange -> value', value)
-    let name = e.target.name
+    const value = parseFloat(e.target.value)
+    const name = e.target.name
 
-    // if (!value.isNumber()) return
-    // if (Number.isNaN(value)) {
-
-    // }
     if (isNaN(value)) {
       this.setState({
         TempC: '',
@@ -44,12 +39,13 @@ class ConvertBox extends Component {
 
   render() {
     const { TempC, TempF } = this.state
+    const { handlePassTemp } = this.props
 
     return (
       <form className="ConvertBox">
         <fieldset>
           <legend>Enter your C</legend>
-          {/* <input type="text" onChange={(e) => this.handleChange(e)} value={TempC} /> */}
+
           <textarea
             onChange={(e) => this.handleChange(e)}
             value={TempC}
@@ -66,6 +62,7 @@ class ConvertBox extends Component {
             rows="2"
           ></textarea>
         </fieldset>
+        <button onClick={handlePassTemp(TempC)}>check</button>
       </form>
     )
   }

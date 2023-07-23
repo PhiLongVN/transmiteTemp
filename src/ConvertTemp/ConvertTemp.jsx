@@ -11,8 +11,11 @@ export default class ConvertTemp extends Component {
     }
   }
 
-  handlePassTemp = (temp) => {
-    console.log(temp)
+  handlePassTemp = (temper) => (event) => {
+    event.preventDefault()
+    this.setState({
+      temp: temper,
+    })
   }
 
   render() {
@@ -20,7 +23,7 @@ export default class ConvertTemp extends Component {
       <div className="ConvertTemp">
         <ConvertBox handlePassTemp={this.handlePassTemp} />
 
-        <TempInfo temp={this.temp} />
+        <TempInfo temp={this.state.temp} />
       </div>
     )
   }
